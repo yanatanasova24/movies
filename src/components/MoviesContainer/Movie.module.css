@@ -1,0 +1,13 @@
+.Movies{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.Movie{
+    width: 20%;
+}
+
+.Movie a{
+    text-decoration: none;
+}
