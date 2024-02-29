@@ -3,10 +3,14 @@ import {urls} from "../constants"
 import {IMovies} from "../interfaces";
 import {IMovie} from "../interfaces";
 import {IRes} from "../types";
+import {IGenres} from "../interfaces/genresInterface";
 
 const movieService = {
-    getAll: ():IRes<IMovies> => apiService(urls.movies.base),
+    getAll: (page= '1'):IRes<IMovies> => apiService(urls.movies.base, {params:{page}}),
     getById: (id:number):IRes<IMovie> => apiService.get(urls.movies.byId(id)),
+    getGenreById: (id:number):IRes<string> => apiService.get(urls.genres.byId(id)),
+    getMoviesByGenreId: (id:number):IRes<IMovies> => apiService.get(urls.genres.moviesByGenreId(id)),
+    getGenres:():IRes<IGenres> => apiService.get(urls.genres.all)
 }
 
 export {movieService}

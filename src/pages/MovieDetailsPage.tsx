@@ -20,7 +20,6 @@ const MovieDetailsPage = () => {
     return (
         <div>
             {movieDetails&&<MovieDetails movieDetails={movieDetails}/>}
-
         </div>
     );
 };

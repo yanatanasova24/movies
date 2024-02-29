@@ -1,7 +1,7 @@
 import {useContext} from "react";
-import {ThemeContext} from "../hoc/ThemeProvider";
+import {Context} from "../hoc/ContextProvider";
 
-const useAppContext = () => useContext(ThemeContext)
+const useAppContext = () => useContext(Context)
 
 export {
     useAppContext

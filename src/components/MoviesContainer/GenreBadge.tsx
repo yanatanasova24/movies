@@ -1,10 +1,23 @@
-import React from 'react';
+import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
+import {IMovie} from "../../interfaces";
+import {movieService} from "../../services";
 
-const GenreBadge = () => {
+interface IProps extends PropsWithChildren{
+    id:number
+}
+
+const GenreBadge:FC<IProps>  = ({id}) => {
+
+    const [genre, setGenre] = useState(null);
+
+    useEffect( () => {
+        movieService.getGenreById(id).then(({data})=>setGenre(data))
+    }, []);
+
     return (
-        <div>
-
-        </div>
+        <a href={genre? `/genres/${genre.id}` : '#'}>
+            {genre&&genre.name}
+        </a>
     );
 };
 
