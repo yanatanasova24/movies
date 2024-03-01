@@ -1,0 +1,8 @@
+.MoviesContainer{
+    width: 90%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    box-sizing: border-box;
+    border-radius: 0 0 2em 2em;
+}

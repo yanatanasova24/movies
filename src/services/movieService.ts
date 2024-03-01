@@ -9,7 +9,7 @@ const movieService = {
     getAll: (page= '1'):IRes<IMovies> => apiService(urls.movies.base, {params:{page}}),
     getById: (id:number):IRes<IMovie> => apiService.get(urls.movies.byId(id)),
     getGenreById: (id:number):IRes<string> => apiService.get(urls.genres.byId(id)),
-    getMoviesByGenreId: (id:number):IRes<IMovies> => apiService.get(urls.genres.moviesByGenreId(id)),
+    getMoviesByGenreId: (id:number, page= '1'):IRes<IMovies> => apiService.get(urls.genres.moviesByGenreId(id), {params:{page}}),
     getGenres:():IRes<IGenres> => apiService.get(urls.genres.all)
 }
 

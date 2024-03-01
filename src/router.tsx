@@ -21,7 +21,7 @@ const router = createBrowserRouter([
                 path:'genres', element:<GenresPage/>
             },
             {
-                path:'genres/:id', element:<SingleGenrePage/>,
+                path:'genres/:id/:name', element:<SingleGenrePage/>,
             }
         ]
     }

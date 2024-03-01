@@ -4,6 +4,7 @@ import {useAppLocation} from "../hooks";
 import {IMovie} from "../interfaces";
 import {movieService} from "../services";
 import {MovieDetails} from "../components";
+import {useAppContext} from "../hooks/useAppContext";
 
 const MovieDetailsPage = () => {
     const {state} = useAppLocation<{movie:IMovie}>();
@@ -17,6 +18,13 @@ const MovieDetailsPage = () => {
             movieService.getById(+id).then(({data})=>setMovieDetails(data))
         }
     }, [id, state]);
+
+    const {handleTitleChange} = useAppContext();
+
+    useEffect(() => {
+        movieDetails&&handleTitleChange(movieDetails.title);
+    }, [movieDetails]);
+
     return (
         <div>
             {movieDetails&&<MovieDetails movieDetails={movieDetails}/>}

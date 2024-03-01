@@ -8,31 +8,14 @@ import {useSearchParams} from "react-router-dom";
 import {useAppContext} from "../../hooks/useAppContext";
 
 interface IProps extends PropsWithChildren{
-
+    movies:IMovies,
+    setPage:(page:number)=>void,
+    prevNext:{prev:number, next:number}
 }
 
-const Movies:FC<IProps> = () => {
-    const [movies, setMovies] = useState<IMovies>(null);
-
-    const [query, setQuery] = useSearchParams({page:'1'})
-
-    const [currentPage, setCurrentPage] = useState(1);
-    const [prevNext, setPrevNext] = useState({prev:null, next:null})
-
-    const {trigger} = useAppContext();
-
-    useEffect(() => {
-        movieService.getAll(query.get('page')).then(({data})=>{
-            setMovies(data);
-            setPrevNext({prev:data.page - 1, next:data.page + 1})
-        })
-    }, [trigger, query.get('page')]);
+const Movies:FC<IProps> = ({movies, setPage, prevNext}) => {
 
     const moviesArray = movies?.results;
-
-    const setPage = (number:number)=>{
-        setQuery({page: number.toString()})
-    };
 
     return (
         <div className={css.Movies}>

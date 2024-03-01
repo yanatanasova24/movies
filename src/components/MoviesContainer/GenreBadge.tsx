@@ -1,6 +1,8 @@
 import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
 import {IMovie} from "../../interfaces";
 import {movieService} from "../../services";
+import {useNavigate} from "react-router-dom";
+import {stat} from "fs";
 
 interface IProps extends PropsWithChildren{
     id:number
@@ -15,7 +17,7 @@ const GenreBadge:FC<IProps>  = ({id}) => {
     }, []);
 
     return (
-        <a href={genre? `/genres/${genre.id}` : '#'}>
+        <a href={genre? `/genres/${genre.id}/${genre.name}` : '#'} >
             {genre&&genre.name}
         </a>
     );

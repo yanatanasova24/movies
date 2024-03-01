@@ -30,8 +30,7 @@
 }
 
 .TumblerWrapper {
-    margin-top: 5px;
-    margin-left: 10px;
+    margin: 0 auto;
     width: 38px;
     height: 30px;
     background-color: #000;

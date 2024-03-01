@@ -16,7 +16,7 @@ const Movie:FC<IProps> = ({movie}) => {
 
     return (
         <div className={css.Movie}>
-            <a href={id.toString()} onClick={()=>navigate(id.toString(), {state:{movie}})}>
+            <a href={`/movies/${id.toString()}`} onClick={()=>navigate(`/movies/${id.toString()}`, {state:{movie}})}>
                 <Poster poster_path={poster_path} original_title={original_title}/>
                 <StarsRating vote_average={vote_average}/>
                 <div>id: {id}</div>
