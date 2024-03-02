@@ -1,10 +1,13 @@
 import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
+
 import {movieService} from "../../services";
 import {IMovies} from "../../interfaces";
 import {useSearchParams} from "react-router-dom";
-import {useAppContext} from "../../hooks/useAppContext";
+import {useAppContext} from "../../hooks";
 import {Movies} from "./Movies";
-import "./MoviesContainer.css"
+import {ThreeDots} from "react-loader-spinner";
+import {ISetState} from "../../types";
+import Loader from "./Loader";
 
 interface IProps extends PropsWithChildren{
 
@@ -23,13 +26,14 @@ const MoviesContainer:FC<IProps> = () => {
         })
     }, [trigger, query.get('page')]);
 
+
     const setPage = (number:number)=>{
         setQuery({page: number.toString()})
     };
 
     return (
-        <div className='MoviesContainer'>
-            {movies&&<Movies movies={movies} setPage={setPage} prevNext={prevNext} />}
+        <div>
+            {!movies ? <Loader/> : movies&&<Movies movies={movies} setPage={setPage} prevNext={prevNext} />}
         </div>
     );
 };

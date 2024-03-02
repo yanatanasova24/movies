@@ -1,9 +1,11 @@
-import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
-import {Outlet} from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+
 import {movieService} from "../services";
-import {IGenres} from "../interfaces/genresInterface";
-import {GenreBadge} from "../components/MoviesContainer/GenreBadge";
-import {useAppContext} from "../hooks/useAppContext";
+import {IGenres} from "../interfaces";
+import {GenreBadge} from "../components";
+import {useAppContext} from "../hooks";
+import "../components/MoviesContainer/Genres/GenreCloud.css"
+import Loader from "../components/MoviesContainer/Loader";
 
 const GenresPage= () => {
 
@@ -20,8 +22,8 @@ const GenresPage= () => {
     const genresList = genres?.genres;
 
     return (
-        <div>
-            {genres&&genresList.map(genre => <GenreBadge id={genre.id} key={genre.id}/>)}
+        <div className="GenreCloud">
+            {!genres ? <Loader/> : genresList.map(genre => <GenreBadge id={genre.id} key={genre.id} name={genre.name}/>)}
         </div>
     );
 };

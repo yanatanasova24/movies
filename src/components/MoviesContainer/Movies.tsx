@@ -1,11 +1,10 @@
-import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
-import {movieService} from "../../services";
+import React, {FC, PropsWithChildren} from 'react';
+
 import {Movie} from "./Movie";
 import {IMovies} from "../../interfaces";
-import css from './Movie.module.css'
-import {Pagination} from "./Pagination";
-import {useSearchParams} from "react-router-dom";
-import {useAppContext} from "../../hooks/useAppContext";
+import './Movie.css'
+import {Pagination} from "./Pagination/Pagination";
+import Loader from "./Loader";
 
 interface IProps extends PropsWithChildren{
     movies:IMovies,
@@ -18,8 +17,8 @@ const Movies:FC<IProps> = ({movies, setPage, prevNext}) => {
     const moviesArray = movies?.results;
 
     return (
-        <div className={css.Movies}>
-            {moviesArray&&moviesArray.map(movie=><Movie key={movie.id} movie={movie}/>)}
+        <div className="Movies">
+            {!moviesArray ? <Loader/> : moviesArray.map(movie=><Movie key={movie.id} movie={movie}/>)}
             {movies&&<Pagination
                 page={movies.page}
                 total_pages={movies.total_pages}

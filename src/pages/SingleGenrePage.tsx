@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {useParams, useSearchParams} from "react-router-dom";
+
 import {IMovies} from "../interfaces";
 import {movieService} from "../services";
-import {Movie, Movies} from "../components";
-import css from "../components/MoviesContainer/Movie.module.css";
-import {useAppContext} from "../hooks/useAppContext";
-import {IGenres} from "../interfaces/genresInterface";
-import {useAppLocation} from "../hooks";
+import {Movies} from "../components";
+import {useAppContext} from "../hooks";
+import Loader from "../components/MoviesContainer/Loader";
 
 const SingleGenrePage = () => {
 
@@ -34,8 +33,8 @@ const SingleGenrePage = () => {
     };
 
     return (
-            <div className={css.Movies}>
-                {movies&&<Movies movies={movies} setPage={setPage} prevNext={prevNext}/>}
+            <div>
+                {!movies ? <Loader/> : <Movies movies={movies} setPage={setPage} prevNext={prevNext}/>}
         </div>
     );
 };

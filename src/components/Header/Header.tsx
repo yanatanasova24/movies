@@ -1,9 +1,9 @@
 import React, {FC, PropsWithChildren} from 'react';
-import css from './Header.module.css'
 import {NavLink, useNavigate} from "react-router-dom";
+
+import css from './Header.module.css'
 import {ThemeSwitcher} from "./ThemeSwitcher";
-import {IMovie} from "../../interfaces";
-import {useAppContext} from "../../hooks/useAppContext";
+import {useAppContext} from "../../hooks";
 
 interface IProps extends PropsWithChildren{
 

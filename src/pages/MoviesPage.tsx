@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react';
-import {Movies} from "../components";
-import {Outlet} from "react-router-dom";
-import {MoviesContainer} from "../components/MoviesContainer/MoviesContainer";
-import {useAppContext} from "../hooks/useAppContext";
+
+import {MoviesContainer} from "../components";
+import {useAppContext} from "../hooks";
 
 const MoviesPage = () => {
     const {handleTitleChange} = useAppContext();
